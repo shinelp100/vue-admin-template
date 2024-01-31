@@ -1,10 +1,11 @@
 import Vue from 'vue'
+import moment from 'moment'
 
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import locale from 'element-ui/lib/locale/lang/en' // lang i18n
+import locale from 'element-ui/lib/locale/lang/zh-CN' // lang i18n
 
 import '@/styles/index.scss' // global css
 
@@ -34,6 +35,11 @@ Vue.use(ElementUI, { locale })
 // Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+
+// 全局过滤器的定义
+Vue.filter('global_filter', function(value, type = 'YYYY-MM-DD hh:mm:ss') {
+  return moment(value).format(type)
+})
 
 new Vue({
   el: '#app',
